@@ -1,5 +1,8 @@
 const { Telegraf } = require("telegraf")
 const { join } = require("path")
+const fs = require("fs")
+const axios = require("axios")
+
 const OpenAI = require("openai")
 const commands = require("./commands")
 const utils = require("./utils")
@@ -33,7 +36,7 @@ bot.command("duck", commands.duck)
 
 const history = {}
 
-bot.on("message", async(ctx) => {
+bot.on("text", async(ctx) => {
     const message = ctx.message.text
     const id = ctx.message.chat.id
 
@@ -112,6 +115,32 @@ bot.on("message", async(ctx) => {
     } catch (err) {
         ctx.reply(`An error occurred: ${err.message}`)
     }
+})
+
+
+
+bot.on("voice", async(ctx) => {
+    const fileId = ctx.message.voice.file_id
+    const fileName = `${fileId}.ogg`
+    const filePath = join(__dirname, "audio", fileName)
+
+    const { href } = await bot.telegram.getFileLink(fileId)
+    const response = await axios.get(href, {
+        responseType: "arraybuffer"
+    })
+
+    const buffer = Buffer.from(response.data, "binary")
+    fs.writeFileSync(filePath, buffer)
+
+    ctx.reply("Generating text...")
+
+    const transcript = await openai.audio.transcriptions.create({
+        response_format: "json",
+        model: "whisper-1",
+        file: fs.createReadStream(filePath)
+    })
+
+    ctx.reply(transcript.text)
 })
 
 bot.launch({
