@@ -35,7 +35,9 @@ const notifyAdmin = (bot, message) => {
     }
 }
 
-const exchange = async(from) => {
+const exchange = async(options) => {
+    const { from } = options
+
     const response = await axios.get(`https://pro-api.coinmarketcap.com/v2/tools/price-conversion`, {
         params: {
             amount: 1,

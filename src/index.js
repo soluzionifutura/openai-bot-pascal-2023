@@ -87,7 +87,7 @@ bot.on("message", async(ctx) => {
             const functionName = response.function_call.name
             const functionToCall = availableFunctions[functionName]
             const functionArgs = JSON.parse(response.function_call.arguments)
-            const functionResponse = await functionToCall(functionArgs.from)
+            const functionResponse = await functionToCall(functionArgs)
     
             history[id].push({
                 "role": "function",
