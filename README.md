@@ -6,6 +6,8 @@ Public link: [http://bit.ly/bot-pascal](http://bit.ly/bot-pascal)
 
 Meet: [https://meet.google.com/ibd-tpfm-skw](https://meet.google.com/ibd-tpfm-skw)
 
+Link gradimento: [https://forms.gle/dtrzGMFbVGpG8RoTA](https://forms.gle/dtrzGMFbVGpG8RoTA)
+
 ## Setup
 
 1. Install [NodeJS](https://nodejs.org/en)
