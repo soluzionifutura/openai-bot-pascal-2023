@@ -8,6 +8,8 @@ Meet: [https://meet.google.com/ibd-tpfm-skw](https://meet.google.com/ibd-tpfm-sk
 
 Link gradimento: [https://forms.gle/dtrzGMFbVGpG8RoTA](https://forms.gle/dtrzGMFbVGpG8RoTA)
 
+Link test: [https://forms.gle/xgTr2L27XvtAaLuw5](https://forms.gle/xgTr2L27XvtAaLuw5)
+
 ## Setup
 
 1. Install [NodeJS](https://nodejs.org/en)
